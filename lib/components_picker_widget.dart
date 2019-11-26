@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'cupertino_widget.dart';
 
 class ComponentPickerWidget extends StatefulWidget {
   @override
@@ -261,19 +264,24 @@ class _ComponentPickerWidgetState extends State<ComponentPickerWidget> {
                   ],
                 ),
               ),
-              Card(
-                margin: EdgeInsets.all(20.0),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 48.0, bottom: 48.0),
-                          child: Text('Card擁有一個圓角和陰影'),
-                        )
-                      ],
-                    )
-                  ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, CupertinoPageRoute(builder: (_) => CupertinoIosWidget()));
+                },
+                child: Card(
+                  margin: EdgeInsets.all(20.0),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 48.0, bottom: 48.0),
+                            child: Text('Card擁有一個圓角和陰影'),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
