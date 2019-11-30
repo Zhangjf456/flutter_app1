@@ -1,4 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'advancedwidget.dart';
+import 'layout2widget.dart';
+import 'layout_widget.dart';
 
 class BasicBottomWidget extends StatefulWidget {
   @override
@@ -7,7 +12,7 @@ class BasicBottomWidget extends StatefulWidget {
 
 class _BasicBottomWidgetState extends State<BasicBottomWidget> {
   bool value = true;
-  String value1 = '点击右上角内容';
+  String value1 = '点击';
   TextEditingController controller = TextEditingController();
   bool checkValueA = true;
   bool checkValueB = false;
@@ -112,7 +117,12 @@ class _BasicBottomWidgetState extends State<BasicBottomWidget> {
                         children: <Widget>[
                           RaisedButton(
                             onPressed: () {},
-                            child: Text('添加高亮颜色及阴影部分'),
+                            child: Text(
+                              '添加高亮颜色及阴影部分',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  decorationStyle: TextDecorationStyle.dashed),
+                            ),
                             highlightColor: Colors.greenAccent,
                             elevation: 50.0,
                           )
@@ -128,6 +138,8 @@ class _BasicBottomWidgetState extends State<BasicBottomWidget> {
                             label: Text('我的'),
                             icon: Icon(Icons.directions),
                           ), //无阴影的bottom
+                          RaisedButton.icon(
+                              onPressed: () {}, icon: Icon(Icons.build), label: Text('设置')),
                           IconButton(
                             icon: Icon(Icons.favorite),
                             iconSize: 40.0,
@@ -275,7 +287,45 @@ class _BasicBottomWidgetState extends State<BasicBottomWidget> {
                   ),
                 ],
               ),
-              Text('5555'),
+              Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      RaisedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context, CupertinoPageRoute(builder: (_) => LayoutWidget()));
+                        },
+                        child: Text('layout'),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  CupertinoPageRoute(builder: (_) => LayoutListViewWidget()));
+                            },
+                            child: Container(
+                                color: Colors.blueGrey,
+                                height: 40.0,
+                                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('wode '),
+                                )),
+                          ),
+                        ],
+                      ),
+                      RaisedButton(
+                          child: Text('进阶篇'),
+                          onPressed: () {
+                            Navigator.push(
+                                context, CupertinoPageRoute(builder: (_) => AdvancedTextWidget()));
+                          })
+                    ],
+                  ),
+                ],
+              ),
               Text('5895')
             ])));
   }
